@@ -1,0 +1,77 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# ... #}
+
+{% block body %}
+{% include "components/navbar.html.twig" %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    
+
+    <div class="container_form col-3 mx-auto">
+      <form class="form-signin mx-auto" action="{{ path('app_login') }}" method="POST">
+      <div class="d-flex justify-content-center">
+        <img
+          class="mb-4 mx-auto"
+          src="{{asset('/images/logo/ND_Logo.png')}}"
+          alt="logo image"
+          width="300"
+          height="auto"
+        />
+        </div>
+        <h1 class="h3 mb-3 fw-normal">Connectez-vous</h1>
+
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="username"
+            placeholder="name@example.com"
+            name="_username" 
+            value="{{ last_username }}"
+          />
+          <label for="username">Email</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input
+            type="password"
+            class="form-control"
+            id="Password"
+            placeholder="Password"
+            name="_password"
+          />
+          <label for="Password">Mot de passe</label>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" /> Se souvenir de moi
+          </label>
+        </div>
+        {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"> #}
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Se connecter
+        </button>
+        <p class="mt-5 mb-3 text-muted">© Nouvelles Donnes - 2022</p>
+      </form>
+    </div>
+    
+    
+
+    
+    {# <form action="{{ path('app_login') }}" method="post">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password">
+
+        
+
+        <button type="submit">login</button>
+    </form> #}
+{% endblock %}
