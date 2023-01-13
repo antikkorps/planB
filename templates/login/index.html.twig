@@ -12,7 +12,7 @@
     
 
     <div class="container_form col-3 mx-auto">
-      <form class="form-signin mx-auto" action="{{ path('app_login') }}" method="POST">
+      <form class="form-signin mx-auto" action="{{ path('app_login') }}" method="post">
       <div class="d-flex justify-content-center">
         <img
           class="mb-4 mx-auto"
@@ -45,14 +45,15 @@
           />
           <label for="Password">Mot de passe</label>
         </div>
-
+<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me" /> Se souvenir de moi
           </label>
         </div>
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"> #}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {# If you want to control the URL the user is redirected to on success#}
+        <input type="hidden" name="_target_path" value="/login"> 
         <button class="w-100 btn btn-lg btn-primary" type="submit">
           Se connecter
         </button>
